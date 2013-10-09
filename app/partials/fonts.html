@@ -1,0 +1,42 @@
+<div  ng-controller="FontPalette">
+   <h3 class="subhead">Font Palette</h3>
+  <div class="font-palette">
+
+  <form ng-submit="addFont(brand,family)" > 
+      <!-- <form ng-submit="addColors(brand,color.colorVal); color.colorVal = '';" >  -->
+
+      <select ng-model="family" class="bottom20m">
+        <option value=''>Please select the value</option>
+       <option value="'Bookman Old Style', serif">Bookman Old Style</option>
+       <option value="Garamond, serif"> Garamond</option>
+       <option value="Georgia, serif">  Georgia</option>
+       <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">  Palatino Linotype, Book Antiqua</option>
+       <option value="'Times New Roman', Times, serif"> Times New Roman, Times</option>
+       <option value="Arial, Helvetica, sans-serif">  Arial, Helvetica</option>
+       <option value="'Arial Black', Gadget, sans-serif"> Arial Black, Gadget</option>
+       <option value="Impact, Charcoal, sans-serif">  Impact, Charcoal</option>
+       <option value="'MS Sans Serif', Geneva, sans-serif"> MS Sans Serif, Geneva</option>
+       <option value="'MS Serif', 'New York', sans-serif">  MS Serif, New York</option>
+       <option value="'Trebuchet MS', Helvetica, sans-serif"> Trebuchet MS, Helvetica</option>
+       <option value="Verdana, Geneva, sans-serif"> Verdana, Geneva</option>
+       <option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif">  Lucida Sans Unicode, Lucida Grande</option>
+       <option value="Tahoma, Geneva, sans-serif">  Tahoma, Geneva</option>
+       <option value="Courier, monospace">  Courier</option>
+       <option value="'Courier New', Courier, monospace"> Courier New, Courier</option>
+       <option value="'Lucida Console', Monaco, monospace"> Lucida Console, Monaco</option>
+       <option value="'Comic Sans MS', cursive">  Comic Sans MS</option>
+      </select>
+
+      <h1 style="font-family: {{ family }}">Bacon ipsum dolor sit amet kielbasa chuck</h1>
+      <h2 style="font-family: {{ family }}">T-bone ham hock meatloaf tongue chuck rum</h2>
+      <h3 style="font-family: {{ family }}">Pork loin pancetta pastrami ball</h3>
+      <h4 style="font-family: {{ family }}">Shank bacon pork belly, strip steak drumstick</h4>
+      <p style="font-family: {{ family }}">Bacon ipsum dolor sit amet kielbasa chuck pastrami turkey pork loin pancetta corned beef tongue prosciutto hamburger biltong boudin turducken pork belly leberkas. Flank beef biltong, leberkas tri-tip prosciutto pork chop capicola meatloaf. Shoulder ribeye ground round kevin fatback corned beef beef ribs frankfurter chicken. Turducken prosciutto filet mignon, swine ham meatloaf tri-tip tenderloin beef ribs sirloin ribeye ground round. Filet mignon pastrami salami tongue prosciutto ball tip chicken, ham tenderloin. Ribeye pancetta chuck shank.</p>
+
+     
+          <div><input class="btn-primary" type="submit" value="+ Add New" ></div>
+  </form>
+
+  </div>
+
+</div>

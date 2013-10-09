@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>Style Guide Generator</title>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/defaults.css"/>
+  <link rel="stylesheet" href="css/icons.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="lib/jquery-ui-1.10.0.custom.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+
+  <script src="js/app.js"></script>
+
+</head>
+<body>
+  <div class="container" ng-controller="StylePalette">
+    <nav class="bottom20m">
+      <h1 class="pull-left"><a class="brand">Style Guide Generator</a></h1>
+
+
+       <form ng-submit="addBrands();"  class="nav pull-right">
+        <input type="text" ng-model="brand.name"  size="30" placeholder="add new brand here">
+        <input class="icon-plus" type="submit" value="">
+      </form>
+
+      <div class="clear bottom20m"></div>
+    </nav>
+
+   
+
+<div ng-repeat="brand in brands.results" ng-show="true"> 
+
+  <div class="brandbar">
+      <!-- <input type="button" value="Show" > -->
+      <span class="pull-left right10m" ng-click="animateDiv = !animateDiv"><i class="icon-cog"></i></span>
+
+      <h2 class="pull-left brandname nomargin" ng-click="editing = true" ng-focus="brand.update">{{brand.name}}</h2>
+
+      <span class="pull-right delete-brand" value="X" ng-click="deleteBrands(brand);" ><i class="icon-trash"></i></span>
+      
+      <span ng-click="SetBgColor = !SetBgColor;" ng-focus="brand.bg_color" class="bgblock pull-right" ng-style="{'background': '-webkit-linear-gradient(top, '+brand.bg_color+' 0%, '+brand.bg_endcolor+' 100%)'}"></span>
+
+      <div ng-class="{'show': SetBgColor, 'hide': !SetBgColor}">
+   
+           <form class="pull-right right20m bgcolorform" ng-submit="updateBrands(brand); animateDiv = animateDiv;" >
+              <input class="brandbg" type="text" ng-model="brand.bg_color"/>
+              <span ng-show="brand.bg_gradient"> to <input class="brandbg" type="text" ng-model="brand.bg_endcolor"/></span>
+              <input class="icon-refresh " type="submit" value=""  />
+            </form>
+
+            <span class="pull-right right10m">Gradient <input type="checkbox"  ng-model="brand.bg_gradient" ng-true-value="checked" ng-false-value="" checked="brand.bg_gradient" ng-change="brand.bg_endcolor = brand.bg_color;"/></span>
+
+      </div>
+
+     
+      <form class="pull-left" ng-show="editing" ng-blur="editing = false;" ng-submit="updateBrands(brand); editing = false; ";>
+        <input class="left10m" type="text" ng-model="brand.update" placeholder="Update Name"  />
+        <input class="icon-refresh" type="submit" value="" ng-click="editing = false; brand.name = brand.update;" >
+      </form>
+      
+      <div class="clear bottom20m"></div>
+
+  </div>
+
+
+  <div ng-class="{'showdiv': animateDiv, 'hidediv': !animateDiv}" class="contentdiv">
+      
+    <div id="cssBlock">
+
+      
+      <span  ng-controller="ColorPalette">
+        <span ng-repeat="color in colors.results">
+      ${{ color.ColorVariable }}: {{ color.colorVal }};<br>
+       
+      </span>
+    </span>
+
+    <p>.background-solid{
+        background: {{brand.bg_color}};
+      }</p>
+      .background-gradient{
+        background: -webkit-linear-gradient(top, {{brand.bg_color}}  0%, {{brand.bg_endcolor}} 100%);
+      }</p>
+  </code>
+      </div>
+
+      
+      <div ng-include src="'partials/colors.html'" class="bottom20m col-box" ng-style="{'background': '-webkit-linear-gradient(top, '+brand.bg_color+' 0%, '+brand.bg_endcolor+' 100%)'}"></div>
+      <div ng-include src="'partials/buttons.html'" class="bottom20m col-box"></div>
+      <div ng-include src="'partials/fonts.html'" class="bottom20m col-box"></div>
+
+      
+  </div>
+
+  <div class="clear"></div>
+  
+</div>
+
+
+
+  </div>
+
+
+
+
+  
+ 
+
+
+  
+</body>
+</html>

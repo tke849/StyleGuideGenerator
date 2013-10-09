@@ -1,0 +1,98 @@
+
+
+
+<div  ng-controller="ButtonPalette">
+  <h3 class="subhead">Button Styles</h3>
+  <form ng-show="true" class="button-palette add-button" ng-submit="addButtons(brand,ButtonHeight,ButtonWidth,ButtonBackground,ButtonText,ButtonBorderRadius,ButtonBorder,ButtonBoxShadow,ButtonPadding); color.colorVal = '';">
+    <div>
+      <label>Enter Pixel Height<br><em>10px</em></label>
+      <input class="" type="text" ng-model="ButtonHeight">
+    </div>
+      <div>
+      <label>Enter Pixel Width<br><em>100px</em></label>
+      <input class="" type="text" ng-model="ButtonWidth">
+    </div>
+    <div>
+      <label>Enter Background Color<br><em>#dedede</em></label>
+      <input class="" type="text" ng-model="ButtonBackground" ng-click="addHash($event)">
+    </div>
+    <div>
+      <label>Enter Font Color<br><em>#dedede</em></label>
+      <input class="" type="text" ng-model="ButtonText" ng-click="addHash($event)">
+    </div>
+    <div>
+      <label>Enter Border Radius<br><em>5px or <br>5px 5px 5px 5px (tl, tr, br, bl)</em></label>
+      <input class="" type="text" ng-model="ButtonBorderRadius">
+    </div>
+    <div>
+      <label>Enter Border<br><em>1px solid #000000</em></label>
+      <input class="" type="text" ng-model="ButtonBorder">
+    </div>
+    <div>
+      <label>Enter Box Shadow<br><em>10px 10px 5px #888888;</em></label>
+      <input class="" type="text" ng-model="ButtonBoxShadow">
+    </div>
+    <div>
+      <label>Enter Padding<br><em>8px 10px</em></label>
+      <input class="" type="text" ng-model="ButtonPadding">
+    </div>
+
+    <span style="width:100%; margin-top: 20px">
+      
+      <div class="mybutton btn" ng-style="{'height': ButtonHeight, 'width': ButtonWidth, 'background': ButtonBackground, 'color': ButtonText, 'border-radius': ButtonBorderRadius, 'border': ButtonBorder, 'box-shadow': ButtonBoxShadow, 'padding': ButtonPadding}">Button Text</div>
+      <input class="btn-primary pull-right" type="submit" value="+ Add New" >
+    </span>
+  </form>
+
+
+   <form ng-repeat="button in buttons.results" ng-show="true" class="button-palette button-display">
+    <div>value = {{buttons.button[$index].height}}  Index = {{$index}}
+      <label>Enter Pixel Height<br><em>10px</em></label>
+      <input class="" type="text" ng-model="button.new_button_height" placeholder="{{button.button_height}}">
+    </div>
+      <div>
+      <label>Enter Pixel Width<br><em>100px</em></label>
+      <input class="" type="text" ng-model="button.new_button_width" placeholder="{{button.button_width}}">
+    </div>
+    <div>
+      <label>Enter Background Color<br><em>#dedede</em></label>
+      <input class="" type="text" ng-model="button.new_button_background" placeholder="{{button.button_background}}" ng-click="addHash($event)">
+    </div>
+    <div>
+      <label>Enter Font Color<br><em>#dedede</em></label>
+      <input class="" type="text" ng-model="button.new_button_text" placeholder="{{button.button_text}}" ng-click="addHash($event)">
+    </div>
+    <div>
+      <label>Enter Border Radius<br><em>5px or <br>5px 5px 5px 5px (tl, tr, br, bl)</em></label>
+      <input class="" type="text" ng-model="button.new_button_radius" placeholder="{{button.button_radius}}">
+    </div>
+    <div>
+      <label>Enter Border<br><em>1px solid #000000</em></label>
+      <input class="" type="text" ng-model="button.new_button_border" placeholder="{{button.button_border}}">
+    </div>
+    <div>
+      <label>Enter Box Shadow<br><em>#dedede</em></label>
+      <input class="" type="text" ng-model="button.new_button_shadow" placeholder="{{button.button_shadow}}">
+    </div>
+    <div>
+      <label>Enter Padding<br><em>8px 10px</em></label>
+      <input class="" type="text" ng-model="button.new_button_padding" placeholder="{{button.button_padding}}">
+    </div>
+
+    <span style="width:100%; margin-top: 20px">
+      <style>
+      .btn{
+        height: {{button.button_height}};
+        width: {{button.button_width}};
+        background: {{button.button_background}};
+        color: {{button.button_text}};
+        border-radius: {{button.button_radius}};
+        border: {{button.button_border}};
+        box-shadow: {{button.button_shadow}};
+        padding: {{button.button_padding}};
+      }
+      </style>
+      <div class="mybutton btn" ng-style="{'height': button.button_height, 'width': button.button_width, 'background': button.button_background, 'color': button.button_text, 'border-radius': button.button_radius, 'border': button.button_border, 'box-shadow': button.button_shadow, 'padding': button.button_padding}">Button Text</div>
+    <span>
+  </form>
+</div>

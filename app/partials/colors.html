@@ -1,0 +1,38 @@
+
+
+
+
+<div  ng-controller="ColorPalette">
+  <h3 class="{{brand.colorText}} subhead">Color Palette </h3>
+  <div class="color-palette">
+  	<!--  First Form -->
+  	<form ng-submit="addColors(brand,colorVal,ColorVariable); colorVal = ''; ColorVariable = '';" > 
+      <!-- <form ng-submit="addColors(brand,color.colorVal); color.colorVal = '';" >  -->
+    	<div class="new-color-box" ng-style="{background: colorVal}" style="background: {{ colorVal }}"></div>
+    	   <div><input class="color-input" type="text" ng-model="ColorVariable" placeholder="Variable Name" val=""></div>
+	        <div><input class="color-input" type="text" ng-model="colorVal" placeholder="Color Value" val=""></div>
+	        <div><input class="btn-primary" type="submit" value="+ Add New" ></div>
+	</form>
+	<!-- Show Results -->
+    <form  ng-repeat="color in colors.results" ng-show="true" ng-submit="updateColors(color.NewColorVal,color.NewColorVariable,color)" > 
+
+    	<i class="colors-icon icon-trash pull-right {{brand.colorText}}" ng-click="deleteColors(color)"></i>
+      <i class="colors-icon icon-edit pull-left {{brand.colorText}}" ng-click="edit_color = true; edit_variable = true; save_color = true; colorval_display = 'hide';" ></i>
+
+		  <div class="color-box" ng-style="{background: color.NewColorVal}" style="background: {{ color.colorVal }}"></div>
+		
+      <div class="{{brand.colorText}}" ng-class="colorval_display" >${{ color.ColorVariable }}</div>
+      <div class="{{brand.colorText}}" ng-class="colorval_display" >{{ color.colorVal }}</div>
+      <div class="{{brand.colorText}}" ng-class="colorval_display">{{ color.RGBaVal }}</div>
+
+      <input class="color-input new" type="text" ng-model="color.NewColorVariable" value="" ng-init="color.NewColorVariable=color.ColorVariable" ng-show="edit_variable"  ng-submit="edit_variable = false; ">
+
+      <input class="color-input new" type="text" ng-model="color.NewColorVal" placeholder="{{ color.colorVal }}" value="" ng-init="color.NewColorVal=color.colorVal" ng-show="edit_color"  ng-submit="edit_color = false; ">
+
+      <button type="submit" ng-show="save_color"><i class="icon-refresh" ></i></button>
+
+        
+    </form>
+
+  </div>
+</div>
